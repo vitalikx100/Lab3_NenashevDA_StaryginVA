@@ -36,12 +36,12 @@ public class Task implements Serializable {
     @XmlTransient
     private User user;
 
-    @NotNull(message = "Created date Not Blank")
+    @NotNull(message = "Created date Not Null")
     @Column(name = "created_date", nullable = false)
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate createdDate;
 
-    @NotNull(message = "Completed status Not Blank")
+    @NotNull(message = "Completed status Not Null")
     @Column(name = "completed", nullable = false)
     private Boolean completed = false;
 

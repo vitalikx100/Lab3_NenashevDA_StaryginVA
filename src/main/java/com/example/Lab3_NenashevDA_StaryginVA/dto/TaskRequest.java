@@ -13,7 +13,7 @@ public class TaskRequest {
     @NotBlank(message = "Title Not Blank")
     private String title;
 
-    @NotNull(message = "User ID Not Blank")
+    @NotNull(message = "User ID Not Null")
     private Long userId;
 
     private Boolean completed = false;

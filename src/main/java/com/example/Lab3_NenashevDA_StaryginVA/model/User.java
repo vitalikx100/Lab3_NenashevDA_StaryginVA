@@ -29,7 +29,7 @@ public class User implements Serializable {
     @Column(name = "name", nullable = false, length = 128)
     private String name;
 
-    @Email()
+    @Email(message = "Email Not Valid")
     @NotBlank(message = "Email Not Blank")
     @Column(name = "email", nullable = false, unique = true)
     private String email;
