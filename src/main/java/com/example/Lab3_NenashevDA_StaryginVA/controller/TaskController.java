@@ -17,25 +17,25 @@ public class TaskController {
 
     private final TaskService taskService;
 
-    @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    @GetMapping(produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, MediaType.TEXT_XML_VALUE})
     public List<Task> getAllTasks() {
         return taskService.getAllTasks();
     }
 
-    @GetMapping(value = "/{id}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    @GetMapping(value = "/{id}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, MediaType.TEXT_XML_VALUE})
     public ResponseEntity<Task> getTaskById(@PathVariable Long id) {
         return taskService.getTaskById(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
-            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, MediaType.TEXT_XML_VALUE})
     public Task createTask(@RequestBody TaskRequest request) {
         return taskService.createTask(request);
     }
 
     @PutMapping(value = "/{id}",
             consumes = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE},
-            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+            produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, MediaType.TEXT_XML_VALUE})
     public ResponseEntity<Task> updateTask(@PathVariable Long id, @RequestBody Task task) {
         return taskService.updateTask(id, task).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
@@ -45,7 +45,7 @@ public class TaskController {
         return taskService.deleteTask(id) ? ResponseEntity.noContent().build() : ResponseEntity.notFound().build();
     }
 
-    @GetMapping(value = "/user/{userId}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+    @GetMapping(value = "/user/{userId}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE, MediaType.TEXT_XML_VALUE})
     public List<Task> getTasksByUser(@PathVariable Long userId) {
         return taskService.getTasksByUserId(userId);
     }
